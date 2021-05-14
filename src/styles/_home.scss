@@ -1,0 +1,55 @@
+.home {
+  height: 100vh;
+  width: 200vw;
+  position: relative;
+  display: flex !important;
+
+  .hero {
+    height: 100%;
+    width: 100vw !important;
+    padding: 4rem;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 55px;
+    letter-spacing: 0.045em;
+    color: black;
+    position: relative;
+    .text {
+      position: absolute;
+      top: 200px;
+      width: 60% !important;
+      height: 70%;
+      white-space: pre-line;
+    }
+    .home__icon,
+    .search__icon {
+      position: absolute;
+      bottom: 40px;
+    }
+    .search__icon {
+      left: 83px;
+    }
+  }
+
+  .road {
+    position: fixed;
+    bottom: 70px;
+    left: 200px;
+  }
+
+  .school {
+    position: absolute;
+    right: 70px;
+    bottom: 60px;
+  }
+}
+
+.stagger {
+  overflow: hidden;
+  font-size: inherit;
+  span {
+    display: inline-block;
+    transform: translateY(100%);
+  }
+}

@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  overflow-x: hidden;
+  font-family: "Poppins";
+}
+h2 {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+}
+.mapboxgl-ctrl {
+  display: none !important;
+}
+.map-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+.label {
+  background-color: white;
+  height: 400px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@import "./styles/header";
+@import "./styles/home";
+@import "./styles/info";
+@import "./styles/map";
+@import "./styles/search";
+@import "./styles/loading";
+@import "./styles/trajets";
+@import "./styles/login";
+@import "./styles/creer";
+@import "./styles/popup";

@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  min-height: 10vh;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1.6rem;
+  position: fixed;
+  z-index: 100;
+  img {
+    transform: scale(0.8);
+  }
+  .menu {
+    height: 70px;
+    width: 170px;
+    border-radius: 35px;
+    border: 4px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    div {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: 0.045em;
+      color: #1a1a1a;
+    }
+    .burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: space-around;
+      //   width: 100%;
+      height: 90%;
+      .line {
+        width: 35px;
+        height: 5px;
+        // margin-bottom: 0.2rem;
+        background: #1a1a1a;
+        border-radius: 10px;
+      }
+    }
+  }
+}

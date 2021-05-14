@@ -1,0 +1,138 @@
+$pink: #cd6e6f;
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #424d5c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  * {
+    font-family: Moula;
+    color: #ffffff;
+  }
+}
+.svg__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  @include center;
+}
+.title__container {
+  height: 25%;
+  width: 100%;
+  @include center;
+  text-align: center;
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    h3 {
+      font-weight: 500;
+      font-size: 55px;
+    }
+    h2 {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 26px;
+    }
+    a {
+      color: $pink;
+      text-decoration: underline !important;
+      cursor: pointer;
+    }
+  }
+}
+
+.form__container {
+  position: fixed;
+  bottom: 20px;
+  left: 40px;
+  // height: 84%;
+  min-height: 78%;
+  @include center;
+  width: 450px;
+  background: rgba(0, 0, 0, 0.44);
+  backdrop-filter: blur(8px);
+  border-radius: 27px;
+  padding: 1rem;
+  form {
+    height: 100%;
+    width: 100%;
+  }
+  .input__container {
+    width: 80%;
+    height: 60px;
+    position: relative;
+    margin: 1.25rem 0.4rem;
+    label {
+      position: absolute;
+      top: 15px;
+      left: 0;
+      font-weight: normal;
+      font-size: 26px;
+      transition: all 0.6s ease;
+      pointer-events: none;
+    }
+    input {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border: none;
+      background: transparent;
+      outline: none;
+      border-bottom: 3px solid $pink;
+      width: 100%;
+      height: 100%;
+      font-size: 1.8rem;
+    }
+  }
+
+  .form__submit {
+    margin-top: 1rem;
+    button {
+      background: #fff;
+      border-radius: 25px;
+      width: 200px;
+      height: 55px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 26px;
+      color: #252b34;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.form__info {
+  font-weight: bold;
+  .error {
+    color: darken($pink, 20);
+    font-size: 1.4rem;
+  }
+  .success {
+    color: rgb(14, 148, 14);
+    font-size: 1.4rem;
+  }
+}
+
+.form__info.creer {
+  .error {
+    color: darken($pink, 10);
+    font-size: 2.4rem;
+  }
+  .success {
+    color: rgb(14, 148, 14);
+    font-size: 2.4rem;
+  }
+}

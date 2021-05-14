@@ -1,0 +1,176 @@
+.creer {
+  height: 100%;
+  width: 100%;
+  background: #424d5c;
+  font-family: Moula;
+  padding: 1.4rem;
+  .creer__title {
+    width: 100%;
+    height: 200px;
+    @include center;
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 78px;
+    color: #ffffff;
+  }
+  .creer__label {
+    font-size: 48px;
+    line-height: 52px;
+    color: $pink;
+    position: relative;
+    margin: 0.8rem 1.2rem;
+    &::before {
+      content: "";
+      position: absolute;
+      left: -25px;
+      width: 20px;
+      height: 20px;
+      background: #ae5d5e;
+      border-radius: 50%;
+      bottom: 18px;
+    }
+    span {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 30px;
+    }
+  }
+  .creer__map--container {
+    width: 100%;
+    height: 600px;
+    @include center;
+    .creer__map {
+      height: 550px;
+      width: 70%;
+      background: white;
+      box-shadow: -6px -6px 20px rgba(0, 0, 0, 0.25),
+        8px 8px 12px rgba(0, 0, 0, 0.25);
+      border-radius: 23px;
+      padding: 1rem;
+    }
+  }
+  .creer__input {
+    height: 80px;
+    min-width: 300px;
+    max-width: 500px;
+    background: white;
+    box-shadow: -6px -6px 20px rgba(0, 0, 0, 0.25),
+      8px 8px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 80px;
+    margin: 1.6rem 0;
+    @include center;
+    input {
+      height: 100%;
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 0.6rem;
+      color: $fontColor;
+      font-size: 2rem;
+      margin: 0 1rem;
+      &::placeholder {
+        font-weight: 300;
+        font-size: 36px;
+        line-height: 39px;
+        color: rgba(7, 34, 71, 0.71);
+      }
+    }
+    #small {
+      &::placeholder {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .recurssif__title {
+    display: flex;
+    align-items: center;
+    .enableToggle {
+      position: relative;
+      width: 72px;
+      height: 42px;
+      background: rgba(196, 196, 196, 0.5);
+      border: 6px solid #ffffff;
+      border-radius: 52px;
+      margin-left: 1.2rem;
+      cursor: pointer;
+      .rond {
+        width: 28px;
+        height: 28px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 1px;
+        left: 2px;
+        background: #f0f0f0;
+        transition: all 0.7s ease;
+        // transform: translateX(100%);
+      }
+    }
+  }
+  .recurssif {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: white;
+    font-size: 2.5rem;
+    user-select: none;
+    .dayContainer {
+      min-width: 270px;
+      @include center;
+      .day {
+        padding-right: 1rem;
+        font-weight: 500;
+        font-size: 42px;
+        color: #ffffff;
+      }
+      .checkBox {
+        width: 27px;
+        height: 28px;
+        background: rgba(196, 196, 196, 0.56);
+        border: 3px solid #764344;
+        @include center;
+        cursor: pointer;
+        svg {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+  .submit__container {
+    height: 200px;
+    width: 100%;
+    @include center;
+    .submit {
+      width: 60%;
+      height: 120px;
+      background: $pink;
+      @include center;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 52px;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      &:hover {
+        background: lighten($color: $pink, $amount: 10%);
+      }
+    }
+  }
+}
+
+.search__input {
+  position: relative;
+  min-height: 80px;
+}
+
+.creer__coords {
+  font-size: 2rem;
+  color: rgb(14, 148, 14);
+  font-weight: 400;
+
+  span {
+    font-style: italic;
+    font-size: 1.2rem;
+  }
+}

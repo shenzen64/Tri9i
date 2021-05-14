@@ -1,0 +1,48 @@
+.popupContainer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  @include center;
+  background: rgba(0, 0, 0, 0.6);
+  .popup {
+    height: 50%;
+    width: 60%;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+    padding: 2rem;
+    z-index: 101;
+  }
+}
+
+.register {
+  display: flex;
+  align-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Moula;
+  font-size: 2.4rem;
+  text-align: center;
+  color: $fontColor;
+  a {
+    color: $pink;
+    text-decoration: underline !important;
+  }
+}
+
+.added {
+  @include center;
+  font-size: 2.5rem;
+  color: $fontColor;
+}
+
+.errorP {
+  color: $pink;
+}
+
+.successP {
+  color: rgb(10, 150, 10);
+}

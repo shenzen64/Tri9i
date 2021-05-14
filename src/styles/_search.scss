@@ -1,0 +1,207 @@
+$searchBackground: #dfe0e0;
+$fontColor: #1a293d;
+@mixin boxStyle {
+  width: 100%;
+  height: 60px;
+  background: $searchBackground;
+  box-shadow: -8px -2px 9px rgba(0, 0, 0, 0.25), 4px 9px 19px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+@mixin fontStyle {
+  font-family: Moula;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 26px;
+  text-transform: uppercase;
+  color: $fontColor;
+  padding: 1rem;
+}
+.searchContainer {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  .search {
+    width: 55%;
+    position: absolute;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    pointer-events: all;
+    .inputContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      @include boxStyle;
+      svg {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+      .line {
+        height: 60%;
+        width: 3px;
+        background-color: rgba(60, 71, 85, 0.65);
+      }
+      input {
+        flex: 1;
+        background-color: transparent;
+        @include fontStyle;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        color: $fontColor;
+        outline: none;
+        border: none;
+        padding: 1rem;
+      }
+      .x {
+        font-size: 30px;
+        padding: 1rem;
+        cursor: pointer;
+        color: $fontColor;
+      }
+    }
+    .allResults {
+      max-height: 250px;
+      overflow: auto;
+      // border: 0.5px solid $fontColor;
+      box-shadow: -8px -2px 9px rgba(0, 0, 0, 0.25),
+        4px 9px 19px rgba(0, 0, 0, 0.3);
+      border-bottom-left-radius: 9px;
+      border-bottom-right-radius: 9px;
+      width: 100% !important;
+      &::-webkit-scrollbar {
+        background-color: $searchBackground;
+        width: 15px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background-color: $fontColor !important;
+        border-radius: 10px;
+        height: 60px !important;
+      }
+
+      .result {
+        background: $searchBackground;
+        border-top: 2px solid $fontColor;
+        @include fontStyle;
+        width: 100% !important;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// CREATE TRAJET
+
+.smallSearch {
+  width: 500px;
+  max-height: 40%;
+  // position: absolute;
+  // top: 0px;
+  // left: 0;
+  position: relative;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  pointer-events: all;
+  overflow: visible;
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 50px;
+    // @include boxStyle;
+
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    box-shadow: -8px -2px 9px rgba(0, 0, 0, 0.25),
+      4px 9px 19px rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    // border-radius: 80px;
+    input {
+      width: 100%;
+      height: 100%;
+      // flex: 1;
+      background-color: transparent;
+      @include fontStyle;
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+      color: $fontColor;
+      outline: none;
+      border: none;
+      padding: 1.2rem;
+      // position: absolute;
+      // left: 3px;
+      // top: 4px;
+      &::placeholder {
+        font-weight: 300;
+        font-size: 36px;
+        line-height: 39px;
+        color: rgba(7, 34, 71, 0.71);
+      }
+    }
+    .x {
+      font-size: 30px;
+      padding: 1rem;
+      cursor: pointer;
+      color: $fontColor;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+  .allResults {
+    max-height: 250px;
+    overflow: auto;
+    // border: 0.5px solid $fontColor;
+    box-shadow: -8px -2px 9px rgba(0, 0, 0, 0.25),
+      4px 9px 19px rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    width: 100% !important;
+    z-index: 10;
+    &::-webkit-scrollbar {
+      background-color: $searchBackground;
+      width: 15px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background-color: $fontColor !important;
+      border-radius: 10px;
+      height: 60px !important;
+    }
+
+    .result {
+      background: $searchBackground;
+      border-top: 2px solid $fontColor;
+      @include fontStyle;
+      width: 100% !important;
+      cursor: pointer;
+    }
+  }
+}
+
+.smallSearchContainer {
+  max-height: 100px;
+  z-index: 10;
+}

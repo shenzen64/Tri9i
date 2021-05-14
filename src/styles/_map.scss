@@ -1,0 +1,72 @@
+#root {
+  $markerScale: 1;
+}
+
+.mapContainer {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  overflow: hidden;
+}
+.label {
+  color: red !important;
+}
+
+.marker {
+  transform: scale(var(--markerScale)) !important;
+}
+.marker__info {
+  //   background: #fff;
+  z-index: 1;
+  height: 2000px !important;
+  width: 1200px !important;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addLocation {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 270px;
+  height: 65px;
+  font-family: Moula;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 22px;
+  color: #072247;
+  background: #e5e5e5;
+  border-radius: 62px;
+  cursor: pointer;
+  user-select: none;
+  svg {
+    pointer-events: none;
+  }
+}
+.addLocation.up {
+  color: #cd6e6f;
+  padding: 0.3rem;
+  opacity: 0;
+  p {
+    padding: 0.2rem;
+  }
+}
+
+// .mapboxgl-canvas-container {
+//   cursor: pointer !important;
+// }
