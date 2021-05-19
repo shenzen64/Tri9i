@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapboxGl, { ZoomControl , RotationControl} from 'react-mapbox-gl';
 import * as THREE from 'three'
-import model from '../markerr.gltf'
-import matcap from './matcap4.png'
+import model from '../static/models/markerr.gltf'
+import matcap from '../static/images/matcap4.png'
 import globalTb from 'threebox-plugin';
 import "threebox-plugin/dist/threebox.css"
 import "threebox-plugin/examples/css/threebox.css"
@@ -14,7 +14,7 @@ import { AddLocation, ClickIcon, GpsIcon } from '../Svg';
 import gsap from 'gsap/gsap-core';
 import { setRTLTextPlugin } from "mapbox-gl";
 
-// setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js");
+setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js");
 
 
 const Threebox = globalTb.Threebox

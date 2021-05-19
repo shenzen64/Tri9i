@@ -48,6 +48,7 @@ const CreateTrajet = () => {
     const history = useHistory()
 
     const rond = useRef()
+    const info = useRef()
 
     // disable past dates
     const yesterday = moment().subtract(1, 'day');
@@ -60,18 +61,22 @@ const CreateTrajet = () => {
     const handleSubmit = async ()=>{
         if(!coords.latitude){
             setSuccess('')
+            info.current.scrollIntoView({behavior: 'smooth'})
             return setError("Veillez Entrer La Position De Départ Sur La Map")
         }
         if(adresse.length < 5){
             setSuccess('')
+            info.current.scrollIntoView({behavior: 'smooth'})
             return setError("L'Adresse De Départ Doit Contenir Au Moins 5 Caractères")
         }
         if(!destination){
             setSuccess('')
+            info.current.scrollIntoView({behavior: 'smooth'})
             return setError("Veillez Entrer L'école De Destination")
         }
         if(!max){
             setSuccess('')
+            info.current.scrollIntoView({behavior: 'smooth'})
             return setError("Veillez Entrer Le Nombre Maximal De Passagers")
         }
 
@@ -93,13 +98,13 @@ const CreateTrajet = () => {
         try {
             const response = await axios.post('/createTrajet',data,{headers})
 
-            console.log(response.data)
             setError('')
             setSuccess("Trajet Ajoutée Avec Succée")
             setCoords({})
             setAdresse("")
             setDestination('')
             setMax("")
+            info.current.scrollIntoView({behavior: 'smooth'})
             
         } catch (error) {
             console.log(error)
@@ -205,7 +210,7 @@ const CreateTrajet = () => {
                     Ajouter Le Trajet
                 </div>
             </div>
-            <div className="form__info creer">
+            <div ref={info} className="form__info creer">
                         {error && <div className="error">{error}</div>}
                         {success && <div className="success">{success}</div>}
              </div>

@@ -1,0 +1,264 @@
+$signal: #2a7c80;
+
+.user {
+  height: 100%;
+  width: 100%;
+  background-color: #424d5c;
+  padding: 1.2rem;
+  font-family: Moula;
+  .user__title {
+    display: flex;
+    align-items: center;
+    margin-top: 4rem;
+    position: relative;
+    .user__icon {
+      height: 85px;
+      width: 85px;
+      background: $signal;
+      border-radius: 50%;
+      margin-right: 1rem;
+      @include center;
+    }
+    .user__name {
+      font-weight: 500;
+      font-size: 64px;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #ffffff;
+    }
+    .logout {
+      position: absolute;
+      right: 1rem;
+      width: 80px;
+      height: 80px;
+      background: #ffffff;
+      border-radius: 50%;
+      @include center;
+      cursor: pointer;
+    }
+  }
+  .cards__container {
+    margin-top: 2rem;
+    // height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .card {
+      height: 300px;
+      width: 600px;
+      background: white;
+      box-shadow: -6px -6px 20px rgba(0, 0, 0, 0.25),
+        8px 8px 12px rgba(0, 0, 0, 0.25);
+      border-radius: 18px;
+      padding: 1rem;
+      margin: 1rem;
+      .card__title {
+        padding: 0.2rem 0.4rem;
+        display: flex;
+        align-items: center;
+        .card__icon {
+          height: 60px;
+          width: 60px;
+          @include center;
+          background: rgba(42, 124, 128, 0.23);
+          backdrop-filter: blur(10px);
+          border-radius: 50%;
+          margin-right: 1rem;
+        }
+        .card__name {
+          font-size: 40px;
+          letter-spacing: -0.03em;
+          text-transform: capitalize;
+          color: #2a7c80;
+        }
+      }
+    }
+  }
+}
+
+.singleTrajet {
+  position: relative;
+  margin: 1.5rem 0.3rem;
+  .singleTrajet__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .singleTrajet__info {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.4rem;
+    .depart {
+      font-weight: 300;
+      font-size: 19px;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      white-space: nowrap;
+      transform: translateY(-8px) translateX(-16px);
+    }
+    .destination {
+      font-size: 24px;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #cd6e6f;
+    }
+  }
+  .singleTrajet__actions {
+    display: flex;
+    align-self: self-start;
+  }
+  .learnMore,
+  .deleteIcon {
+    cursor: pointer;
+  }
+  .learnMore {
+    margin-right: 0.6rem;
+  }
+}
+
+.iconWithInfo {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 0.8rem;
+  }
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  text-transform: capitalize;
+  padding: 0.6rem 0.2rem;
+}
+
+.inputWithIcon {
+  height: 65px;
+  padding: 0.8rem;
+  width: 90%;
+  margin: 0.6rem 0.2rem;
+  background: #e5e5e5;
+  border-radius: 11px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  input {
+    flex-basis: 100%;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    font-weight: 500;
+    font-size: 36px;
+    letter-spacing: -0.03em;
+    color: #031329;
+    margin-right: 0.8rem;
+  }
+}
+
+.biggerSvg {
+  svg {
+    transform: scale(1.4);
+  }
+}
+
+.updateSubmit {
+  height: 50px;
+  width: 290px;
+  background: $signal;
+  border-radius: 7px;
+  cursor: pointer;
+  color: white;
+  @include center;
+  font-size: 36px;
+  letter-spacing: -0.03em;
+  margin-top: 1.5rem;
+  border: none;
+  transition: all 0.4s ease;
+  &:hover {
+    background: lighten($signal, 10);
+  }
+}
+
+.deleteTr {
+  font-size: 2rem;
+  font-weight: 400;
+  color: $pink;
+  p {
+    margin-bottom: 1rem;
+  }
+  button {
+    padding: 0.4rem 1.4rem;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin: 0.6rem 0.3rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    outline: none;
+  }
+  .yes {
+    background: $pink;
+    &:hover {
+      background: lighten($color: $pink, $amount: 10);
+    }
+  }
+  .no {
+    background: $signal;
+    &:hover {
+      background: lighten($color: $signal, $amount: 10);
+    }
+  }
+}
+
+.aucunTrajet {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: $pink;
+  padding: 2rem 0.2rem;
+  // font-style: italic;
+}
+
+.cardWrapper {
+  width: 100%;
+  // height: 80%;
+  display: flex;
+  align-items: center;
+  // flex-wrap: wrap;
+  .rigth,
+  .left {
+    flex-basis: 100%;
+    padding: 1rem;
+  }
+  .rigth {
+    border-left: 2px solid $signal;
+  }
+}
+
+.input__container {
+  margin-top: 1rem;
+  label {
+    font-size: 36px;
+    letter-spacing: -0.03em;
+    text-transform: capitalize;
+    color: #1a293d;
+    padding: 1rem 0.3rem;
+  }
+}
+
+.updatePassword {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0.4rem;
+  font-weight: 400;
+  font-size: 1.8rem;
+  .box {
+    margin-right: 1rem;
+    @include center;
+    height: 27px;
+    width: 27px;
+    border: 2px solid $fontColor;
+    cursor: pointer;
+  }
+}

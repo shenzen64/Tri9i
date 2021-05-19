@@ -1,18 +1,81 @@
-import React from 'react'
-import logo from '../logo.png'
+import React, { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import logo from '../static/images/logo.png'
+import gsap from 'gsap'
+import { useStateValue } from '../context/StateProvider'
+
+import creer from '../static/images/creer.png'
+import home from '../static/images/home.png'
+import login from '../static/images/login.png'
+import map from '../static/images/map.png'
+import profil from '../static/images/profil.png'
+
 
 const Header = () => {
+
+    const [opened,setOpened] = useState(false)
+    const [initTl,setTl] = useState(null)
+    const [state,dispatch] = useStateValue()
+    const line1 = useRef()
+    const line2 = useRef()
+    const menu = useRef()
+    const img = useRef()
+    const imgContainer = useRef()
+    
+   
+    
+    const tl = gsap.timeline({defaults : {
+        ease: 'Power2.easeOut',
+        duration:.8,
+        // paused: true
+    }})
+    
+
+    useEffect(() => {
+     
+        if(opened){
+            tl.to(line1.current , { rotate:45, y:7.5 } )
+            tl.to(line2.current , { rotate: -45, y : -7.5 }, "-=1" )
+            tl.to(menu.current, {duration:1.5 ,clipPath: "circle(2500px at 100% -10%)" },0)
+        } else {
+            tl.to(line1.current , { rotate:0, y:0 } )
+            tl.to(line2.current , { rotate: 0, y : 0 }, "-=1" )
+            tl.to(menu.current, {  clipPath: "circle(50px at 100% -10%)"  },0)
+        }
+    }, [opened])
+
+    const handleMouseEnter = (src)=>{
+        img.current.src = src
+        gsap.fromTo(imgContainer.current,{opacity:0,y:300, duration:0.8},{opacity:1,y:0})
+    }
+
+    const handleMouseLeave = ()=>{
+        gsap.fromTo(imgContainer.current,{opacity:1,y:0, duration:0.8},{opacity:0,y:-300})
+    }
+
     return (
         <div className='header'>
-            <img src={logo} alt="Tri9i logo"/>
-            <div className="menu">
-                <div>Menu</div>
-                <div className="burger">
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
+                <div className="header__logo">
+                  <Link to='/'> <img src={logo} alt="Tri9i logo"/> </Link>  
                 </div>
-            </div>
+                <div onClick={()=>setOpened(!opened)} className="burger">
+                    <div ref={line1} className="line"></div>
+                    <div ref={line2} className="line"></div>
+                </div>
+                <div ref={menu} className="menu">
+                    <nav>
+                        <li onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(home)}  onClick={()=>setOpened(false)}> <Link to="/">ACCUEIL</Link> </li>
+                        <li onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(map)}  onClick={()=>setOpened(false)}> <Link to="/map">MAP</Link> </li>
+                       { state.user ? <> <li onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(creer)}  onClick={()=>setOpened(false)}> <Link to="/creer">CREER UN TRAJET</Link> </li>
+                        <li  onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(profil)} onClick={()=>setOpened(false)}> <Link to="/profil">PROFIL</Link> </li> </> : 
+                        <> <li onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(login)}  onClick={()=>setOpened(false)}> <Link to="/signup">CREER UN COMPTE</Link> </li>
+                        <li  onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(login)} onClick={()=>setOpened(false)}> <Link to="/login">CONNECTEZ-VOUS</Link> </li> </>
+                        }
+                    </nav>
+                    <div ref={imgContainer} className="menu__image">
+                        <img ref={img} src={home} alt="IMAGE OF MENU" />
+                    </div>
+                </div>
         </div>
     )
 }

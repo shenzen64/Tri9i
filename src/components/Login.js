@@ -60,7 +60,7 @@ const Login = () => {
                 </div>
                 <div className="form__container">
                     <form onSubmit={handleSubmit}>
-                        <div className="input__container">
+                        <div className="inputContainer">
                         <label>Email </label>
                             <input
                             onFocus={handleFocus}
@@ -68,7 +68,7 @@ const Login = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             type="email" />
                         </div>
-                        <div className="input__container">
+                        <div className="inputContainer">
                         <label> Mot De Passe</label>
                             <input 
                             onFocus={handleFocus}

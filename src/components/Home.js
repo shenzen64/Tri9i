@@ -2,7 +2,6 @@ import gsap  from 'gsap'
 import { Power2 } from 'gsap/gsap-core'
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import Header from './Header'
 import LocomotiveScroll from 'locomotive-scroll'
 import "../../node_modules/locomotive-scroll/src/locomotive-scroll.scss"
 import { HomeIcon, School, SearchMap } from "../Svg";
@@ -54,7 +53,6 @@ const Home = () => {
     
     return (
         <>
-         <Header />
         <div ref={home} data-scroll-container className='home scroll-container'>
            
             

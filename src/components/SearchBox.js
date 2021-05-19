@@ -49,7 +49,7 @@ const SearchBox = ({small=false, setDestination}) => {
         <div className={small ? "smallSearchContainer" :'searchContainer'} >
             {currSchool && <Trajets name={currSchoolName} currSchool={currSchool} />}
           <div className={ small? "smallSearch" :"search"}>
-            <div className="inputContainer">
+            <div className="inputC">
                 { !small && <SearchIcon />}
                 {!small && <div className="line"></div>}
                 <input

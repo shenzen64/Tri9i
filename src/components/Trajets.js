@@ -4,7 +4,7 @@ import { useStateValue } from "../context/StateProvider";
 import { AccountIcon, BigArrow, DateIcon, DollarIcon, LocalisationIcon, PhoneIcon } from '../Svg'
 import { Link } from 'react-router-dom'
 import * as THREE from 'three'
-import model from '../markerr.gltf'
+import model from '../static/models/markerr.gltf'
 import moment from 'moment'
 import gsap from 'gsap'
 import Popup from './Popup';
@@ -138,7 +138,7 @@ const Trajets = ({currSchool,name}) => {
             if(response.data.error){
                 setInfo(response.data.error)
             } else {
-                setInfo('Trajet Ajouté Avec Succée')
+                setInfo("Trajet Ajouté Avec Succée, Contactez Le Conducteur Pour Plus D'information")
             }
          
             
@@ -327,7 +327,7 @@ const Trajets = ({currSchool,name}) => {
                   <AccountIcon /> {currTrajet.conducteur.name}
               </div>
               <div className="trajet__info">
-                  <PhoneIcon /> {"0"+currTrajet.conducteur.phone}
+                  <PhoneIcon /> {currTrajet.conducteur.phone}
               </div>
               <div className="trajet__info">
                   <LocalisationIcon /> {currTrajet.adresseDepart}
