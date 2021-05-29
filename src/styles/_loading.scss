@@ -1,12 +1,14 @@
 .mapLoading {
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  background-color: inherit;
+  background-color: rgb(106, 163, 195);
+  @include center;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .pin {
-  -webkit-animation-name: pin;
-  animation-duration: 1.2s;
-  animation-iteration-count: infinite;
   width: 30px;
   height: 30px;
   border-radius: 50% 50% 50% 0;
@@ -16,6 +18,7 @@
   left: 50%;
   top: 50%;
   margin: -20px 0 0 -20px;
+  animation: pin 1.2s infinite;
 }
 .pin:after {
   content: "";
@@ -45,12 +48,13 @@
   width: 40px;
   position: absolute;
   margin: -13px 0 0 -13px;
-  -webkit-animation: pulsate 1s ease-out;
-  -webkit-animation-iteration-count: infinite;
+  // -webkit-animation: pulsate 1s ease-out;
+  // -webkit-animation-iteration-count: infinite;
   opacity: 0;
   box-shadow: 0 0 1px 2px #312783;
+  animation: pulsate 1s ease-in-out infinite;
 }
-@-webkit-keyframes pulsate {
+@keyframes pulsate {
   0% {
     -webkit-transform: scale(0.1, 0.1);
     transform: scale(0.1, 0.1);
@@ -64,7 +68,7 @@
     transform: scale(1.2, 1.2);
   }
 }
-@-webkit-keyframes bounce {
+@keyframes bounce {
   0% {
     -webkit-transform: translateY(-2000px) rotate(-45deg);
   }
@@ -79,7 +83,7 @@
   }
 }
 
-@-webkit-keyframes pin {
+@keyframes pin {
   100% {
     top: 45%;
     bottom: 60px;

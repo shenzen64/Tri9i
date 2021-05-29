@@ -9,6 +9,7 @@ import home from '../static/images/home.png'
 import login from '../static/images/login.png'
 import map from '../static/images/map.png'
 import profil from '../static/images/profil.png'
+import signin from '../static/images/signin.png'
 
 
 const Header = () => {
@@ -22,6 +23,7 @@ const Header = () => {
     const img = useRef()
     const imgContainer = useRef()
     
+    const elements = []
    
     
     const tl = gsap.timeline({defaults : {
@@ -37,11 +39,16 @@ const Header = () => {
             tl.to(line1.current , { rotate:45, y:7.5 } )
             tl.to(line2.current , { rotate: -45, y : -7.5 }, "-=1" )
             tl.to(menu.current, {duration:1.5 ,clipPath: "circle(2500px at 100% -10%)" },0)
+            // tl.to(elements, { y:0 , opacity:1 , stagger:0.3 } )
+
         } else {
             tl.to(line1.current , { rotate:0, y:0 } )
             tl.to(line2.current , { rotate: 0, y : 0 }, "-=1" )
             tl.to(menu.current, {  clipPath: "circle(50px at 100% -10%)"  },0)
+            tl.from(elements, { y:100 , opacity:0, stagger:0.25 } )
+
         }
+
     }, [opened])
 
     const handleMouseEnter = (src)=>{
@@ -64,12 +71,12 @@ const Header = () => {
                 </div>
                 <div ref={menu} className="menu">
                     <nav>
-                        <li onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(home)}  onClick={()=>setOpened(false)}> <Link to="/">ACCUEIL</Link> </li>
-                        <li onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(map)}  onClick={()=>setOpened(false)}> <Link to="/map">MAP</Link> </li>
-                       { state.user ? <> <li onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(creer)}  onClick={()=>setOpened(false)}> <Link to="/creer">CREER UN TRAJET</Link> </li>
-                        <li  onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(profil)} onClick={()=>setOpened(false)}> <Link to="/profil">PROFIL</Link> </li> </> : 
-                        <> <li onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(login)}  onClick={()=>setOpened(false)}> <Link to="/signup">CREER UN COMPTE</Link> </li>
-                        <li  onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(login)} onClick={()=>setOpened(false)}> <Link to="/login">CONNECTEZ-VOUS</Link> </li> </>
+                        <li ref={(el)=>elements[0]=el} onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(home)}  onClick={()=>setOpened(false)}> <Link to="/">ACCUEIL</Link> </li>
+                        <li ref={(el)=>elements[1]=el}  onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(map)}  onClick={()=>setOpened(false)}> <Link to="/map">MAP</Link> </li>
+                       { state.user ? <> <li ref={(el)=>elements[2]=el}  onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(creer)}  onClick={()=>setOpened(false)}> <Link to="/creer">CREER UN TRAJET</Link> </li>
+                        <li ref={(el)=>elements[3]=el}   onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(profil)} onClick={()=>setOpened(false)}> <Link to="/profil">PROFIL</Link> </li> </> : 
+                        <> <li ref={(el)=>elements[2]=el}  onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(login)}  onClick={()=>setOpened(false)}> <Link to="/signup">CREER UN COMPTE</Link> </li>
+                        <li ref={(el)=>elements[3]=el}   onMouseLeave={handleMouseLeave} onMouseEnter={()=>handleMouseEnter(signin)} onClick={()=>setOpened(false)}> <Link to="/login">CONNECTEZ-VOUS</Link> </li> </>
                         }
                     </nav>
                     <div ref={imgContainer} className="menu__image">

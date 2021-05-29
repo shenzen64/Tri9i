@@ -8,6 +8,7 @@ import model from '../static/models/markerr.gltf'
 import moment from 'moment'
 import gsap from 'gsap'
 import Popup from './Popup';
+import { lerp } from "../utils/utils";
 
 
 const geometry = new THREE.PlaneBufferGeometry(30,50,12);
@@ -353,10 +354,6 @@ const Trajets = ({currSchool,name}) => {
         
     )
 }
-function lerp(value1, value2, amount) {
-    amount = amount < 0 ? 0 : amount;
-    amount = amount > 1 ? 1 : amount;
-    return value1 + (value2 - value1) * amount;
-}
+
 
 export default Trajets

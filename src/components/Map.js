@@ -13,8 +13,9 @@ import { useStateValue } from "../context/StateProvider";
 import { AddLocation, ClickIcon, GpsIcon } from '../Svg';
 import gsap from 'gsap/gsap-core';
 import { setRTLTextPlugin } from "mapbox-gl";
+import Loading from './Loading';
 
-setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js");
+// setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js");
 
 
 const Threebox = globalTb.Threebox
@@ -58,13 +59,15 @@ const navControlStyle= {
 }
 
 const Maps = ({small=false, setCoordinates}) => {
-    const [pitch, setPitch] = useState(40)
+    const [pitch, setPitch] = useState(45)
     const [coords, setCoords] = useState([])
     const [viewport , setViewport] = useState({
         longitude: -7.5898434, 
         latitude:33.5731104,
         zoom:11
     })
+
+    const [loading, setLoading] = useState(true)
     const [mapp,setMap] = useState(null)
     const [btnClicked,setbtnClicked] = useState(false)
     const [openedClickLocation,setopenedClickLocation] = useState(false)
@@ -77,9 +80,9 @@ const Maps = ({small=false, setCoordinates}) => {
     const gps = useRef()
     const click = useRef()
 
-    const onViewportChange =  (updated) => {
-        setViewport({
-        //   ...viewport,
+    const onViewportChange = async  (updated) => {
+      await  setViewport({
+          ...viewport,
         //   width: updated._container.clientWidth,
         //   height: updated._container.clientHeight,
           longitude: updated.getCenter().lng,
@@ -89,19 +92,12 @@ const Maps = ({small=false, setCoordinates}) => {
       };
   
     const handleStyleLoad = (map) => {
-       
          setMap(map)
           dispatch({
             type: "SET_MAP",
             map:map
           });
-          setTimeout(() => {
-            console.log("style loaded, go",state)
-          }, 500);
-
-        //
-        // map.addLayer(createCompositeLayer())  //
- 
+          setLoading(false)
     }
     
   const loadData = async () => {
@@ -172,8 +168,9 @@ const Maps = ({small=false, setCoordinates}) => {
                 );
 
                // SCHOOLS
-               if(!small)
+               if(!small){
                 schoolsLayer()
+            }
 
                // INIT
                 window.tb.defaultLights()
@@ -189,14 +186,9 @@ const Maps = ({small=false, setCoordinates}) => {
 
 
 
-    let prevZoom = 11 //
     const handleZoom = (e) => {
         const currZoom = e.getZoom();
-        const scale = clampZoom(prevZoom, currZoom);
-        prevZoom = currZoom
         const root = document.documentElement
-        const currScale = root?.style.getPropertyValue('--markerScale')
-        root?.style.setProperty("--markerScale",currScale+scale)
        if(currZoom < 10){
         root?.style.setProperty("--markerScale",0.3)
        }
@@ -340,9 +332,11 @@ const Maps = ({small=false, setCoordinates}) => {
 
     return (
         <div className='mapContainer' ref={mapContainer}>
+            
             {!small &&  <SearchBox  />}
          
-            <Mapbox
+            { loading && <Loading />}
+             <Mapbox
             
                 style="mapbox://styles/mapbox/navigation-night-v1"
                 containerStyle={{
@@ -363,7 +357,7 @@ const Maps = ({small=false, setCoordinates}) => {
                 onZoom={handleZoom}
                 onMoveEnd={onViewportChange}
                 // onZoomEnd={onViewportChange}
-                // onPitchEnd={onViewportChange}
+                onPitchEnd={onViewportChange}
             >
                 <ZoomControl />
                 <RotationControl />
@@ -376,71 +370,6 @@ const Maps = ({small=false, setCoordinates}) => {
             </div>
         </div>
     )
-}
-
-
-
-function createCompositeLayer() {
-    let layer = {
-        'id': mapConfig.names.compositeLayer,
-        'source': mapConfig.names.compositeSource,
-        'source-layer': mapConfig.names.compositeSourceLayer,
-        'filter': ['==', 'extrude', 'true'],
-        'type': 'fill-extrusion',
-        'minzoom': minZoom,
-        'paint': {
-            'fill-extrusion-color':
-                [
-                    'case',
-                    ['boolean', ['feature-state', 'select'], false],
-                    "lightgreen",
-                    ['boolean', ['feature-state', 'hover'], false],
-                    "lightblue",
-                    '#343242'
-                ],
-
-            // use an 'interpolate' expression to add a smooth transition effect to the
-            // buildings as the user zooms in
-            'fill-extrusion-height': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                minZoom,
-                0,
-                minZoom + 0.05,
-                ['get', 'height']
-            ],
-            'fill-extrusion-base': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                minZoom,
-                0,
-                minZoom + 0.05,
-                ['get', 'min_height']
-            ],
-            'fill-extrusion-opacity': 0.9
-        }
-    };
-    return layer;
-}
-
-
-
-const clampZoom = (prevZoom, currZoom) => {
-    let scale = 0.1
-    // if (currZoom > 15) {
-    //     scale = 0.001
-    // } else {
-    //     scale = 0.0297
-    // }
-
-    if (prevZoom < currZoom) {
-        scale *= -1
-    }
-
-    return scale
-
 }
 
 

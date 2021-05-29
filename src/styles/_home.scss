@@ -1,49 +1,106 @@
-.home {
-  height: 100vh;
-  width: 200vw;
-  position: relative;
-  display: flex !important;
-
-  .hero {
-    height: 100%;
-    width: 100vw !important;
-    padding: 4rem;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 55px;
-    letter-spacing: 0.045em;
-    color: black;
-    position: relative;
-    .text {
-      position: absolute;
-      top: 200px;
-      width: 60% !important;
-      height: 70%;
-      white-space: pre-line;
-    }
-    .home__icon,
-    .search__icon {
-      position: absolute;
-      bottom: 40px;
-    }
-    .search__icon {
-      left: 83px;
-    }
+.hero {
+  // height: 100%;
+  width: 100%;
+  color: white;
+  font-family: Moula;
+  svg {
+    display: none;
   }
-
-  .road {
+  canvas {
     position: fixed;
-    bottom: 70px;
-    left: 200px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
   }
-
-  .school {
-    position: absolute;
-    right: 70px;
-    bottom: 60px;
+  main {
+    height: 100vh;
+    width: 100%;
+    @include center;
+    div {
+      user-select: none;
+      width: 100%;
+      font-weight: 500;
+      font-size: 4.5rem;
+      letter-spacing: 0.045em;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+  .info__container {
+    height: 100vh;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .hero__info {
+      height: 70%;
+      // width: 40% ;
+      padding: 1rem;
+      h3 {
+        font-weight: 500;
+        font-size: 60px;
+        letter-spacing: 0.045em;
+      }
+      p {
+        padding: 2rem 0;
+        font-weight: 300;
+        font-size: 2rem;
+        line-height: 34px;
+        letter-spacing: 0.045em;
+        color: #e6e1e1;
+        max-width: 500px;
+      }
+      .lancer__container {
+        display: flex;
+        width: 300px;
+        align-items: center;
+        font-size: 30px;
+        letter-spacing: 0.045em;
+        justify-content: space-around;
+        margin-top: 2rem;
+        cursor: pointer;
+        .elipse {
+          height: 70px;
+          width: 70px;
+          position: relative;
+          font-size: 3rem;
+          font-weight: 200;
+          @include center;
+          svg {
+            display: block !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+      }
+    }
   }
 }
+
+// .lancer {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   height: 100vh;
+//   width: 100%;
+//   @include center;
+//   font-size: 4rem;
+//   color: #ffffff;
+//   pointer-events: none;
+//   a {
+//     height: 250px;
+//     width: 250px;
+//     background: rgb(32, 32, 110);
+//     border-radius: 50%;
+//     @include center;
+//     cursor: pointer;
+//     pointer-events: all;
+//   }
+// }
 
 .stagger {
   overflow: hidden;

@@ -49,9 +49,10 @@ function App() {
         dispatch({ type: "SET_USER", user });
       } 
   }, []);
+  
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter> 
         <Header />
         <Routing />
       </BrowserRouter>

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import axios from '../axios'
 import Datetime from 'react-datetime';
 import { DateIcon, DeleteIcon, DollarIcon, InfoIcon, LineTo, LocalisationIcon, MaxIcon, MoreInfoIcon, PhoneIcon, UnivIcon } from '../Svg'
 import Popup from './Popup'
 import moment from 'moment';
 
-const SingleTrajet = ({info,canEdit}) => {
+const SingleTrajet = ({info,canEdit,setNumberOfTrajets}) => {
     
     const [opened,setOpened] = useState(false)
     const [getInfo, setGetInfo] = useState(false)
@@ -17,6 +17,8 @@ const SingleTrajet = ({info,canEdit}) => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [deleted,setDeleted] = useState(false)
+
+    const container = useRef()
 
         // disable past dates
         const yesterday = moment().subtract(1, 'day');
@@ -89,14 +91,15 @@ const SingleTrajet = ({info,canEdit}) => {
             }
             setOpened(false)
             setDeleted(true)
+            container.current.parentNode.removeChild(container.current)
+            setNumberOfTrajets((n)=>n-1)
 
         } catch (error) {
             console.log(error)
         }
     }
-
     return (
-        <div style={{display:`${deleted ? 'none' : 'block'}`}} className='singleTrajet'>
+        <div ref={container} style={{display:`${deleted ? 'none' : 'block'}`}} className='singleTrajet'>
             
             <div className="singleTrajet__container">
                 <div className="lineTo">

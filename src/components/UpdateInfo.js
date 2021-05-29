@@ -158,7 +158,7 @@ const UpdateInfo = () => {
                     Mes Informations Personnel
                 </div>
               </div>
-              <form onSubmit={updateInfo} autocomplete="off" >
+              <form onSubmit={updateInfo} autoComplete="off" >
               <div className="cardWrapper">
                   <div className="left">
                      <div className="input__container">

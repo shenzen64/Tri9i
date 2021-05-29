@@ -2,7 +2,11 @@
 const map = (x, a, b, c, d) => (x - a) * (d - c) / (b - a) + c;
 
 // Linear interpolation
-const lerp = (a, b, n) => (1 - n) * a + n * b;
+const lerp =(value1, value2, amount)=> {
+    amount = amount < 0 ? 0 : amount;
+    amount = amount > 1 ? 1 : amount;
+    return value1 + (value2 - value1) * amount;
+}
 
 const calcWinsize = () => {
     return {width: window.innerWidth, height: window.innerHeight};

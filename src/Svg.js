@@ -194,3 +194,16 @@ export const LogoutIcon = ()=>(
     <path d="M28.3156 32.1744L34.9344 25.5556H10.2222V20.4444H34.9344L28.3156 13.8256L31.9444 10.2222L44.7222 23L31.9444 35.7778L28.3156 32.1744ZM40.8889 0C42.2444 0 43.5445 0.53849 44.503 1.49701C45.4615 2.45553 46 3.75556 46 5.11111V17.0456L40.8889 11.9344V5.11111H5.11111V40.8889H40.8889V34.0656L46 28.9544V40.8889C46 42.2444 45.4615 43.5445 44.503 44.503C43.5445 45.4615 42.2444 46 40.8889 46H5.11111C2.27444 46 0 43.7 0 40.8889V5.11111C0 2.27444 2.27444 0 5.11111 0H40.8889Z" fill="#AE5D5E"/>
     </svg>
 )
+
+export const Elipse = ()=>(
+    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="35" cy="35" r="32" stroke="url(#paint0_linear)" strokeWidth="6"/>
+    <defs>
+    <linearGradient id="paint0_linear" x1="-17.7465" y1="43.4848" x2="70" y2="43.4849" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#0500E7"/>
+    <stop offset="1" stopColor="#00F0FF"/>
+    </linearGradient>
+    </defs>
+    </svg>
+
+)
