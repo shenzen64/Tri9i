@@ -13,9 +13,13 @@ import { useStateValue } from "../context/StateProvider";
 import { AddLocation, ClickIcon, GpsIcon } from '../Svg';
 import gsap from 'gsap/gsap-core';
 import { setRTLTextPlugin } from "mapbox-gl";
+// import mapboxgl  from "mapbox-gl";
+// import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 import Loading from './Loading';
 
 setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js");
+
+// mapboxgl.workerClass = MapboxWorker;
 
 
 const Threebox = globalTb.Threebox

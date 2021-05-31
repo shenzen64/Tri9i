@@ -17,7 +17,6 @@
     "react-mapbox-gl": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "serve": "^11.3.2",
     "three": "^0.127.0",
     "threebox-plugin": "^2.2.2",
     "web-vitals": "^1.0.1"
