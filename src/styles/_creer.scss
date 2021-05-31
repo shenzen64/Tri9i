@@ -174,3 +174,111 @@
     font-size: 1.2rem;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .creer {
+    padding: 1.2rem;
+    .creer__title {
+      height: 130px;
+      font-size: 2rem;
+    }
+    .creer__label {
+      font-size: 1.5rem;
+      line-height: 52px;
+      color: $pink;
+      position: relative;
+      margin: 0.6rem 1rem;
+      &::before {
+        width: 13px;
+        height: 13px;
+      }
+      span {
+        font-style: italic;
+        font-weight: 300;
+        font-size: 30px;
+      }
+    }
+    .creer__map--container {
+      width: 100%;
+      height: 600px;
+      .creer__map {
+        height: 550px;
+        width: 100%;
+        background: white;
+        box-shadow: -6px -6px 20px rgba(0, 0, 0, 0.25),
+          8px 8px 12px rgba(0, 0, 0, 0.25);
+        border-radius: 16px;
+        padding: 0.65rem;
+      }
+    }
+    .creer__input {
+      height: 55px;
+      min-width: 300px;
+      max-width: 500px;
+      margin: 1.2rem 0;
+      input {
+        padding: 0.4rem;
+        font-size: 1.7rem;
+        margin: 0 1rem;
+        &::placeholder {
+          font-size: 1.8rem;
+          line-height: 35px;
+        }
+      }
+      #small {
+        &::placeholder {
+          font-size: 0.8rem;
+        }
+      }
+    }
+    .recurssif__title {
+      .enableToggle {
+        width: 52px;
+        height: 30px;
+        border: 4px solid #ffffff;
+        border-radius: 52px;
+        margin-left: 1rem;
+        .rond {
+          width: 20px;
+          height: 20px;
+          // transform: translateX(100%);
+        }
+      }
+    }
+    .recurssif {
+      font-size: 2.2rem;
+      .dayContainer {
+        min-width: 270px;
+        @include center;
+        .day {
+          font-size: 2.5rem;
+        }
+      }
+    }
+    .submit__container {
+      height: 200px;
+      width: 100%;
+      .submit {
+        width: 95%;
+        height: 60px;
+        font-size: 2.3rem;
+      }
+    }
+  }
+
+  .search__input {
+    position: relative;
+    min-height: 80px;
+  }
+
+  .creer__coords {
+    font-size: 1.8rem;
+    color: rgb(14, 148, 14);
+    font-weight: 400;
+
+    span {
+      font-style: italic;
+      font-size: 1rem;
+    }
+  }
+}

@@ -294,3 +294,210 @@ $signal: #2a7c80;
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .user {
+    padding: 0.8rem;
+    .user__title {
+      margin-top: 3rem;
+      .user__icon {
+        height: 55px;
+        width: 55px;
+        margin-right: 0.8rem;
+        svg {
+          transform: scale(0.5);
+        }
+      }
+      .user__name {
+        font-size: 1.9rem;
+      }
+      .logout {
+        position: absolute;
+        right: 0.3rem;
+        width: 45px;
+        height: 45px;
+        svg {
+          transform: scale(0.5);
+        }
+      }
+    }
+    .cards__container {
+      margin-top: 1.2rem;
+      .card {
+        height: 300px;
+        width: 95%;
+        padding: 0.7rem;
+        margin: 0.9rem;
+
+        .seeMoreContainer {
+          position: absolute;
+          bottom: 10px;
+          right: 1rem;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          width: 100%;
+          height: 50px;
+          .voirPlus {
+            cursor: pointer;
+            height: 32px;
+            width: 185px;
+            font-size: 20px;
+            font-weight: 500;
+            color: rgba(22, 59, 61, 1);
+            @include center;
+            letter-spacing: -0.6px;
+            border: 2px solid #2a7c80;
+            box-sizing: border-box;
+            filter: drop-shadow(-6px -6px 20px rgba(0, 0, 0, 0.25)),
+              drop-shadow(8px 8px 12px rgba(0, 0, 0, 0.25));
+          }
+        }
+
+        .card__title {
+          padding: 0.2rem 0.4rem;
+
+          .card__name {
+            font-size: 2.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  .singleTrajet {
+    position: relative;
+    margin: 1.5rem 0.3rem;
+    .singleTrajet__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      svg {
+        transform: scale(0.8);
+      }
+    }
+    .singleTrajet__info {
+      flex-basis: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-left: 0.4rem;
+      .depart {
+        font-size: 1.2rem;
+      }
+      .destination {
+        font-size: 1.6rem;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .iconWithInfo {
+    display: flex;
+    align-items: center;
+    svg {
+      margin-right: 0.8rem;
+    }
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    text-transform: capitalize;
+    padding: 0.6rem 0.2rem;
+  }
+
+  .inputWithIcon {
+    padding: 0.6rem;
+    width: 98%;
+    input {
+      font-size: 1.9rem;
+    }
+  }
+
+  .updateSubmit {
+    width: 80%;
+    font-size: 1.9rem;
+    margin-top: 1.3rem;
+  }
+
+  .deleteTr {
+    font-size: 2rem;
+    font-weight: 400;
+    color: $pink;
+    p {
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.4rem 1.4rem;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      margin: 0.6rem 0.3rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      outline: none;
+    }
+    .yes {
+      background: $pink;
+      &:hover {
+        background: lighten($color: $pink, $amount: 10);
+      }
+    }
+    .no {
+      background: $signal;
+      &:hover {
+        background: lighten($color: $signal, $amount: 10);
+      }
+    }
+  }
+
+  .aucunTrajet {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: $pink;
+    padding: 2rem 0.2rem;
+    // font-style: italic;
+  }
+
+  .cardWrapper {
+    width: 100%;
+    // height: 80%;
+    display: flex;
+    flex-direction: column;
+    .rigth,
+    .left {
+      padding: 0rem;
+    }
+    .rigth {
+      border-left: none;
+    }
+  }
+
+  .input__container {
+    margin-top: 0.8rem;
+    label {
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+      color: #1a293d;
+      padding: 1rem 0.3rem;
+    }
+  }
+
+  .updatePassword {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0.4rem;
+    font-weight: 400;
+    font-size: 1.8rem;
+    .box {
+      margin-right: 1rem;
+      @include center;
+      height: 27px;
+      width: 27px;
+      border: 2px solid $fontColor;
+      cursor: pointer;
+    }
+  }
+}

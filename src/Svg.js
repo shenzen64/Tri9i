@@ -200,7 +200,7 @@ export const Elipse = ()=>(
     <circle cx="35" cy="35" r="32" stroke="url(#paint0_linear)" strokeWidth="6"/>
     <defs>
     <linearGradient id="paint0_linear" x1="-17.7465" y1="43.4848" x2="70" y2="43.4849" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#0500E7"/>
+    <stop stopColor="#0500E7"/>
     <stop offset="1" stopColor="#00F0FF"/>
     </linearGradient>
     </defs>

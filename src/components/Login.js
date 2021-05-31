@@ -22,7 +22,6 @@ const Login = () => {
         email,
       }
       );
-      console.log(response)
       const data =  response.data;
       if (data.user) {
         setSuccess("Login Succesfully");
@@ -58,7 +57,9 @@ const Login = () => {
                 <div className="svg__container">
                     <LoginSvg />
                 </div>
-                <div className="form__container">
+            </div>
+            
+             <div className="form__container loginn">
                     <form onSubmit={handleSubmit}>
                         <div className="inputContainer">
                         <label>Email </label>
@@ -86,7 +87,7 @@ const Login = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+              
         </div>
     )
 }

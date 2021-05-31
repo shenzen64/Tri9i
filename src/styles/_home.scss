@@ -3,6 +3,7 @@
   width: 100%;
   color: white;
   font-family: Moula;
+  overflow-x: hidden;
   svg {
     display: none;
   }
@@ -81,32 +82,22 @@
   }
 }
 
-// .lancer {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   height: 100vh;
-//   width: 100%;
-//   @include center;
-//   font-size: 4rem;
-//   color: #ffffff;
-//   pointer-events: none;
-//   a {
-//     height: 250px;
-//     width: 250px;
-//     background: rgb(32, 32, 110);
-//     border-radius: 50%;
-//     @include center;
-//     cursor: pointer;
-//     pointer-events: all;
-//   }
-// }
-
 .stagger {
   overflow: hidden;
   font-size: inherit;
   span {
     display: inline-block;
     transform: translateY(100%);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .hero {
+    main {
+      div {
+        font-size: 2.5rem;
+        padding: 0.2rem;
+      }
+    }
   }
 }

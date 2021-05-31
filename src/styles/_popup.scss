@@ -46,3 +46,25 @@
 .successP {
   color: rgb(10, 150, 10);
 }
+
+@media screen and (max-width: 800px) {
+  .popupContainer {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    @include center;
+    background: rgba(0, 0, 0, 0.6);
+    .popup {
+      // height: 50%;
+      width: 90%;
+      background: white;
+      border-radius: 10px;
+      position: relative;
+      padding: 2rem;
+      z-index: 101;
+    }
+  }
+}

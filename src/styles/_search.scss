@@ -98,6 +98,9 @@ $fontColor: #1a293d;
         @include fontStyle;
         width: 100% !important;
         cursor: pointer;
+        padding: 1rem 0.6rem;
+        font-size: 21px;
+        // white-space: wrap;
       }
     }
   }
@@ -196,6 +199,7 @@ $fontColor: #1a293d;
       border-top: 2px solid $fontColor;
       @include fontStyle;
       width: 100% !important;
+
       cursor: pointer;
     }
   }
@@ -204,4 +208,121 @@ $fontColor: #1a293d;
 .smallSearchContainer {
   max-height: 100px;
   z-index: 10;
+}
+
+@media screen and (max-width: 800px) {
+  @mixin boxStyle {
+    width: 100%;
+    height: 60px;
+    box-shadow: -3px -1px 3px rgba(0, 0, 0, 0.25),
+      2px 3px 8px rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+  @mixin fontStyle {
+    font-size: 19px;
+    line-height: 0px;
+    padding: 0.6rem;
+  }
+  .searchContainer {
+    .search {
+      width: 100%;
+      top: 52px;
+      padding: 0.6rem;
+      .inputC {
+        @include boxStyle;
+        svg {
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+          transform: scale(0.7);
+        }
+        .line {
+          height: 70%;
+          width: 3px;
+        }
+        input {
+          @include fontStyle;
+          padding: 0.7rem;
+        }
+        .x {
+          font-size: 20px;
+          padding: 0.7rem;
+        }
+      }
+      .allResults {
+        max-height: 220px;
+
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        width: 100% !important;
+        &::-webkit-scrollbar {
+          background-color: $searchBackground;
+          width: 12px;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background-color: $fontColor !important;
+          border-radius: 10px;
+          height: 60px !important;
+        }
+
+        .result {
+          // padding: 1rem 0.6rem;
+          // font-size: 21px;
+
+          background: #dfe0e0;
+          border-top: 2px solid #1a293d;
+          font-family: Moula;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 26px;
+          text-transform: uppercase;
+          color: #1a293d;
+          padding: 1rem;
+          width: 100% !important;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  // CREATE TRAJET
+
+  .smallSearch {
+    width: 100%;
+    max-height: 40%;
+    left: 5px;
+    padding: 0.2rem;
+    .inputC {
+      width: 100%;
+      min-height: 50px;
+      width: 100%;
+      height: 60px;
+      input {
+        @include fontStyle;
+        &::placeholder {
+          font-size: 1.4rem;
+          line-height: 35px;
+        }
+      }
+    }
+    .allResults {
+      max-height: 200px;
+      z-index: 10;
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        height: 40px !important;
+      }
+
+      // .result {
+      //   white-space: wrap;
+      // }
+    }
+  }
 }

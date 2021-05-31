@@ -318,35 +318,45 @@ const Trajets = ({currSchool,name}) => {
                   )) :  <div className='noResult' >Pas de resultat (•_•) </div> : <div className="loading">
                        <strong>Chargement...</strong> 
                   </div>  }
+                  <div className="addYourTrajet">
+                      <Link to='/creer'>
+                      <div className="plusContainer">+</div>
+                      Ajouter Un Trajet
+                      </Link>
+                      
+                  </div>
                 </div>
             </div>
             <div className="selectedTrajet">
               { currTrajet && <> <div className="selectedTrajet__title">
                  <div onClick={returnToAllTrajets} className="arrowContainer"> <BigArrow /> </div> DETAIL DU TRAJET
               </div>
-              <div className="trajet__info">
-                  <AccountIcon /> {currTrajet.conducteur.name}
+              <div className="selectedTrajet__wrapper">
+                    <div className="trajet__info">
+                        <AccountIcon /> {currTrajet.conducteur.name}
+                    </div>
+                    <div className="trajet__info">
+                        <PhoneIcon /> {currTrajet.conducteur.phone}
+                    </div>
+                    <div className="trajet__info">
+                        <LocalisationIcon /> {currTrajet.adresseDepart}
+                    </div>
+                    <div className="trajet__info">
+                        <DateIcon /> {currTrajet.dateStr}
+                    </div>
+                    <div className="trajet__info">
+                        <DollarIcon /> {currTrajet.prix ? currTrajet.prix : "Gratuit"}
+                    </div>
+                    <div className="trajet__info">
+                        Nombre Maximale: {currTrajet.nombreMax}
+                    </div>
+                    <div className="btnContainer">
+                    <div onClick={joinTrajet} className="btn">
+                        Rejoinder Le Trajet
+                    </div>
+                    </div>
               </div>
-              <div className="trajet__info">
-                  <PhoneIcon /> {currTrajet.conducteur.phone}
-              </div>
-              <div className="trajet__info">
-                  <LocalisationIcon /> {currTrajet.adresseDepart}
-              </div>
-              <div className="trajet__info">
-                  <DateIcon /> {currTrajet.dateStr}
-              </div>
-              <div className="trajet__info">
-                  <DollarIcon /> {currTrajet.prix ? currTrajet.prix : "Gratuit"}
-              </div>
-              <div className="trajet__info">
-                  Nombre Maximale: {currTrajet.nombreMax}
-              </div>
-              <div className="btnContainer">
-              <div onClick={joinTrajet} className="btn">
-                  Rejoinder Le Trajet
-              </div>
-              </div> </>}
+               </>}
               
                 </div>
             </div>

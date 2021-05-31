@@ -15,7 +15,7 @@ import gsap from 'gsap/gsap-core';
 import { setRTLTextPlugin } from "mapbox-gl";
 import Loading from './Loading';
 
-// setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js");
+setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js");
 
 
 const Threebox = globalTb.Threebox
@@ -42,15 +42,6 @@ const Mapbox = ReactMapboxGl({
 const matc = new THREE.TextureLoader().load(matcap)
 
 
-let minZoom = 12;
-let mapConfig = {
-			ALL: { center: [-7.565357, 33.560155,0], zoom: 16.25, pitch: 45, bearing: 0 },
-			names: {
-				compositeSource: "composite",
-				compositeSourceLayer: "building",
-				compositeLayer: "3d-buildings"
-			}
-		}
 
 
 const navControlStyle= {
@@ -108,7 +99,7 @@ const Maps = ({small=false, setCoordinates}) => {
             console.log(error)
         }
 
-    }
+}
     
 
     const schoolsLayer = ()=>{
@@ -122,7 +113,6 @@ const Maps = ({small=false, setCoordinates}) => {
             scale: 20,
             rotation: { x: 90, y: 180, z: 0 }, //default rotation
             anchor: 'center',
-            // enableTooltips:truee
         }
        coords.forEach((school,i)=>{
         const lat = school.coordinate[0]
@@ -156,26 +146,29 @@ const Maps = ({small=false, setCoordinates}) => {
                     mbxContext,
                     {
                         defaultLights: true,
-                        enableSelectingObjects: true,
-                        enableSelectingFeatures: true, //change to false to disable fill-extrusion features selection
-                        multiLayer: true,
+                        // enableSelectingObjects: true,
+                        // enableSelectingFeatures: true, //change to false to disable fill-extrusion features selection
+                        // multiLayer: true,
                         antialias:true,      
-                        realSunlight: true,
-                        enableSelectingObjects: true, //enable 3D models over/selectionn
-                        enableTooltips: true // enable default tooltips on fill-extrusion and 3D models 
+                        realSunlight: window.innerWidth > 800,
+                        // enableSelectingObjects: true, //enable 3D models over/selectionn
+                        // enableTooltips: true // enable default tooltips on fill-extrusion and 3D models 
                  
                     }
                 );
 
-               // SCHOOLS
-               if(!small){
+               // SCHOOLS (if not mobile)
+               if(!small && window.innerWidth > 800){
                 schoolsLayer()
-            }
+               }
 
-               // INIT
+               // INIT (if not mobile)
+               if(window.innerWidth >800){
                 window.tb.defaultLights()
                 window.tb.createSkyLayer()
                 window.tb.getSunSky(new Date())
+              }
+
             },
     
             render: function (gl, matrix) {
@@ -191,6 +184,8 @@ const Maps = ({small=false, setCoordinates}) => {
         const root = document.documentElement
        if(currZoom < 10){
         root?.style.setProperty("--markerScale",0.3)
+       } else {
+ root?.style.setProperty("--markerScale",1)
        }
     }
 
@@ -202,9 +197,11 @@ const Maps = ({small=false, setCoordinates}) => {
             }, 
             paused:true
         })
+
+        const offset = window.innerWidth > 800 ? 80 : 60
     
-        tl.fromTo(gps.current,{ opacity:0,  y:0 },{ opacity:1,  y:-80  })
-        tl.fromTo(click.current,{ opacity:0,  y:0  },{ opacity:1,  y:-160  },"-=0.2")
+        tl.fromTo(gps.current,{ opacity:0,  y:0 },{ opacity:1,  y:-offset  })
+        tl.fromTo(click.current,{ opacity:0,  y:0  },{ opacity:1,  y:-offset*2  },"-=0.2")
         
         if(btnClicked){
             tl.play()
@@ -310,10 +307,8 @@ const Maps = ({small=false, setCoordinates}) => {
        
     useEffect(() => {
         loadData()
-        // loadTrajects()
         return ()=>{
             loadData()
-            // loadTrajects()  
         }
     }, [])
 
@@ -338,7 +333,7 @@ const Maps = ({small=false, setCoordinates}) => {
             { loading && <Loading />}
              <Mapbox
             
-                style="mapbox://styles/mapbox/navigation-night-v1"
+                style="mapbox://styles/mapbox/dark-v10?optimize=true"
                 containerStyle={{
                     height: '100vh',
                     width: '100vw'
@@ -357,10 +352,10 @@ const Maps = ({small=false, setCoordinates}) => {
                 onZoom={handleZoom}
                 onMoveEnd={onViewportChange}
                 // onZoomEnd={onViewportChange}
-                onPitchEnd={onViewportChange}
+                onPitchEnd={(e)=>setPitch(e.getPitch())}
             >
-                <ZoomControl />
-                <RotationControl />
+                <ZoomControl position={window.innerWidth <800 ? `top-left`: "top-right"} style={{top:"160px", zIndex:0}} />
+                <RotationControl position={window.innerWidth <800 ? `top-left`: "top-right"} style={{top:"130px", zIndex:0}} />
             </Mapbox>
             
             <div onClick={()=>setopenedClickLocation(!openedClickLocation)} ref={click} className="addLocation up"> <ClickIcon /> <p> { small ?  " Selectionner une position sur la map": "Clicker sur votre localisation sur la map"} </p> </div>

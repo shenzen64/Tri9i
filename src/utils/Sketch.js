@@ -3,7 +3,6 @@ import gsap from 'gsap'
 import bgImg from '../static/images/bg.jpg'
 import bgImg2 from '../static/images/bg2.jpg'
 import * as dat from 'dat.gui'
-
 // const gui = new dat.GUI()
 
 const sizes = {
@@ -20,10 +19,12 @@ void main()
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
 
 
+    // modelPosition += 0.6;
+
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
 
-    gl_PointSize = 2500. * (1. / - viewPosition.z);
+    gl_PointSize = 2000. * (1. / - viewPosition.z);
     gl_Position = projectedPosition;
 
     vUv = uv;
@@ -76,7 +77,7 @@ void main()
         modelPosition += sin(uTransition * uv.x*0.6);
     }
 
-    // modelPosition -= uTransition*0.2;
+    // modelPosition -= 0.2;
 
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
@@ -132,15 +133,18 @@ export default class Sketch {
         this.paths2 = paths2
         this.scene = new THREE.Scene()
         this.camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 100, 10000)
-      
+        
         // gui.add(this.camera.position,'x').min(-500).max(600).step(0.1)
         // gui.add(this.camera.position,'y').min(-500).max(600).step(0.1)
-        // gui.add(this.camera.position,'z').min(-500).max(1900).step(0.1)
+
 
         this.renderer = new THREE.WebGLRenderer({
             canvas: canvas.current,
             antialias:true,
         })
+
+      
+
         this.renderer.setSize(sizes.width, sizes.height)
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         this.geometry = new THREE.BufferGeometry()
@@ -150,8 +154,6 @@ export default class Sketch {
         this.positions = new Float32Array(this.max*3)
         this.opacity = new Float32Array(this.max)
         this.isTransionDone = false 
-
-       
 
         
         for (let i = 0; i < this.max-100; i++) {
@@ -175,8 +177,9 @@ export default class Sketch {
         })
         
         this.mesh = new THREE.Points(this.geometry,this.material)
-        this.mesh.position.z += 0.01
+        // this.mesh.position.z -= 0.1
         this.scene.add(this.mesh)
+
 
 
 
@@ -195,7 +198,17 @@ export default class Sketch {
             })
         )
         this.scene.add(this.map)
+
+        // gui.add(this.camera.rotation,'x').min(-Math.PI*2).max(Math.PI*2).step(0.001).name('cameraX')
+        // gui.add(this.camera.rotation,'y').min(-Math.PI*2).max(Math.PI*2).name('cameraY').step(0.001)
+        // gui.add(this.camera.rotation,'z').min(-Math.PI*2).max(Math.PI*2).name('cameraZ').step(0.001)
+        // gui.add(this.camera.position,'z').min(-1).max(600).step(0.01).name('zoom')
+        // gui.add(this.mesh.position,'z').min(-1).max(600).step(0.01).name('mesh')
+        // gui.add(this.map.position,'z').min(-1000).max(1900).step(0.1).name('map')
         
+
+        // gui.add(this.map.position,'z').min(-200).max(500).step(0.1)
+
        if(!this.isTransionDone) {
         const offsetX = -(sizes.width - imageSize.width)/2
         const offsetY = (sizes.height - imageSize.height)/2
@@ -220,7 +233,8 @@ export default class Sketch {
         
         }
 
-        this.camera.position.z = 430
+        this.camera.position.z = sizes.width <750 ?  260 : 430
+        this.camera.rotation.y = sizes.width <750 ?  0.583 : 0
         this.scene.add(this.camera)
 
         window.addEventListener('resize',this.onResize.bind(this))
@@ -275,6 +289,8 @@ export default class Sketch {
     this.camera.position.x = offsetX
     this.camera.position.y = offsetY
         
+    this.camera.position.z = sizes.width <750 ?  260 : 430
+    this.camera.rotation.y = sizes.width <750 ?  0.583 : 0
 
     // Update camera
     this.camera.aspect = sizes.width / sizes.height
@@ -286,7 +302,6 @@ export default class Sketch {
     }
 
     updateParticules(){
-        
         let j =0
         
         this.lines.forEach((line)=>{
@@ -331,7 +346,6 @@ export default class Sketch {
             this.renderer.render(this.scene, this.camera)
         
             this.updateParticules()
-           
             
             // Call tick again on the next frame
             window.requestAnimationFrame(this.tick.bind(this))

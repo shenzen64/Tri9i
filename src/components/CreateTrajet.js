@@ -102,7 +102,6 @@ const CreateTrajet = () => {
             setSuccess("Trajet Ajoutée Avec Succée")
             setCoords({})
             setAdresse("")
-            setDestination('')
             setMax("")
             info.current.scrollIntoView({behavior: 'smooth'})
             

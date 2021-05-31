@@ -240,7 +240,7 @@ const UpdateInfo = () => {
                         {error && <div className="error">{error}</div>}
                         {success && <div className="success">{success}</div>}
               </div>
-             <button type="submit" class="updateSubmit">Mettre A Jour</button>
+             <button type="submit" className="updateSubmit">Mettre A Jour</button>
              </form>
         </div>
     )

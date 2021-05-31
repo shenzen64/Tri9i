@@ -7,16 +7,16 @@
   width: 100%;
   overflow: hidden !important;
   position: relative;
+  canvas {
+    width: 100%;
+    height: 100%;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    overflow: hidden;
+  }
 }
 
-canvas {
-  width: 100%;
-  height: 100%;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  overflow: hidden;
-}
 .label {
   color: red !important;
 }
@@ -70,3 +70,26 @@ canvas {
 // .mapboxgl-canvas-container {
 //   cursor: pointer !important;
 // }
+
+@media screen and (max-width: 800px) {
+  .addLocation {
+    bottom: 10px;
+    right: 10px;
+    width: 230px;
+    height: 45px;
+    font-size: 1.1rem;
+    line-height: 22px;
+    svg {
+      pointer-events: none;
+      transform: scale(0.7);
+    }
+  }
+  .addLocation.up {
+    color: #cd6e6f;
+    padding: 0.3rem;
+    opacity: 0;
+    p {
+      padding: 0.2rem;
+    }
+  }
+}
