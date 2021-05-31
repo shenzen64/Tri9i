@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import gsap from 'gsap'
 import bgImg from '../static/images/bg.jpg'
 import bgImg2 from '../static/images/bg2.jpg'
-import * as dat from 'dat.gui'
+// import * as dat from 'dat.gui'
 // const gui = new dat.GUI()
 
 const sizes = {

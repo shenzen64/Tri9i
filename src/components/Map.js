@@ -43,12 +43,6 @@ const matc = new THREE.TextureLoader().load(matcap)
 
 
 
-
-const navControlStyle= {
-  right: 10,
-  top: 10
-}
-
 const Maps = ({small=false, setCoordinates}) => {
     const [pitch, setPitch] = useState(45)
     const [coords, setCoords] = useState([])

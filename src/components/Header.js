@@ -15,7 +15,6 @@ import signin from '../static/images/signin.png'
 const Header = () => {
 
     const [opened,setOpened] = useState(false)
-    const [initTl,setTl] = useState(null)
     
     const [state,dispatch] = useStateValue()
     
