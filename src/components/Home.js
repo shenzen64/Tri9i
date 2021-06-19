@@ -6,6 +6,7 @@ import Sketch from '../utils/Sketch'
 import StaggerText from './StaggerText'
 import { Elipse } from '../Svg'
 import { useInView } from 'react-intersection-observer'
+import axios from '../axios'
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -21,7 +22,11 @@ const Home = () => {
     const main = useRef()
     const introText = useRef()
 
+
+
     useEffect(() => {
+
+     
 
         const paths = [...svg.current.querySelectorAll('path')]
         const paths2 = [...svg2.current.querySelectorAll('path')]

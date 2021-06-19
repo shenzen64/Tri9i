@@ -110,7 +110,7 @@ const SearchBox = ({small=false, setDestination}) => {
             
             {schools.length > 0 && (
               <div className="allResults">
-                {!loading ? (
+                {!loading ? ( schools.length > 0 &&
                   schools.map((school) => {
                     return (
                       <div onClick={()=>handleClick(school.coordinate,school.surnom,school._id)} className="result" key={school._id}>
